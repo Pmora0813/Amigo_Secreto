@@ -15,7 +15,9 @@ namespace Amigo_Secreto.Entidades
         public int Telefono { get; set; }
         public Image Foto { get; set; }
         public bool Registrado { get; set; }
-        public int I { get; set; }
+        public int Id_Rol { get; set; }
+        public int Id_Regalo { get; set; }
+        public int Id_Evento { get; set; }
 
     }
 }
