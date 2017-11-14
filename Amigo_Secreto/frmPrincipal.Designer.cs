@@ -1,6 +1,6 @@
 ﻿namespace Amigo_Secreto
 {
-    partial class Form1
+    partial class frmPrincipal
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // frmPrincipal
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(392, 261);
+            this.Name = "frmPrincipal";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.frmPrincipal_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

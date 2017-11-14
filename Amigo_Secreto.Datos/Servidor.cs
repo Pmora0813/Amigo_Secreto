@@ -11,12 +11,11 @@ namespace Amigo_Secreto.Datos
     {
 
         private SqlConnection conn;
-        string cadena;
+        private string cadena;
 
         public void Conectar()
         {
-            string cadena = System.Configuration.ConfigurationManager.ConnectionStrings["0"].ConnectionString;
-
+            cadena = System.Configuration.ConfigurationManager.ConnectionStrings["Amigo_Secreto.Properties.Settings.Conneccion"].ConnectionString;
             conn = new SqlConnection(cadena);
 
             try

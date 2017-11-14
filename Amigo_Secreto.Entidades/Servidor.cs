@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Amigo_Secreto.Logica
+namespace Amigo_Secreto.Entidades
 {
-    public class Class1
+    public class Servidor
     {
     }
 }
