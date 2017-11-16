@@ -25,7 +25,8 @@ namespace Amigo_Secreto
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            frmEvento frmEvento = new frmEvento();
+            frmEvento.Show();
         }
     }
     

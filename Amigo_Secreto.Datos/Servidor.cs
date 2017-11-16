@@ -10,32 +10,34 @@ namespace Amigo_Secreto.Datos
     public class Servidor
     {
 
-        private SqlConnection conn;
-        private string cadena;
+        protected SqlConnection conn;
+        protected string cadena;      
 
-        public void Conectar()
+        public SqlConnection ObtenerConexion()
         {
             cadena = System.Configuration.ConfigurationManager.ConnectionStrings["Amigo_Secreto.Properties.Settings.Conneccion"].ConnectionString;
-            conn = new SqlConnection(cadena);
 
+            conn = new SqlConnection(cadena);
             try
             {
                 conn.Open();
-
+                return conn;
             }
-            catch
+            catch 
             {
-                throw;
-            }
-
-            finally
-            {
-                conn.Close();
+                throw ;
             }
         }
 
+        public bool DescargarConexion()
+        {
+            conn.Dispose();
+            return true;
+        }
     }
+
 }
+
 
 
 

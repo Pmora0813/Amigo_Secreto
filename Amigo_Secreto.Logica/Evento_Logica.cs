@@ -1,4 +1,5 @@
-﻿using Amigo_Secreto.Entidades;
+﻿using Amigo_Secreto.Datos;
+using Amigo_Secreto.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,10 @@ namespace Amigo_Secreto.Logica
                 throw new ArgumentException("Ingrese el costo Minimo para el Regalo");
             if (evento.P_Maximo_Regalo == 0)
                 throw new ArgumentException("Ingrese el costo Maximo para el Regalo");
+
+            Evento_Datos datos = new Evento_Datos();
+
+            datos.Crear_Evento(evento);
 
 
         }
