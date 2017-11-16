@@ -13,7 +13,7 @@ namespace Amigo_Secreto.Datos
         protected SqlConnection conn;
         protected string cadena;      
 
-        public SqlConnection ObtenerConexion()
+        public  SqlConnection Conectar()
         {
             cadena = System.Configuration.ConfigurationManager.ConnectionStrings["Amigo_Secreto.Properties.Settings.Conneccion"].ConnectionString;
 
@@ -29,9 +29,9 @@ namespace Amigo_Secreto.Datos
             }
         }
 
-        public bool DescargarConexion()
+        public bool Desconectar()
         {
-            conn.Dispose();
+            conn.Close();
             return true;
         }
     }
