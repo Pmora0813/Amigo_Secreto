@@ -1,49 +1,44 @@
 ﻿using Amigo_Secreto.Entidades;
 using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Amigo_Secreto.Datos
 {
     public class Evento_Datos
     {
         private Servidor servidor;
-        
+        private SqlDataReader cargar;
 
         public Evento_Datos()
         {
             servidor = new Servidor();
-            
+
         }
         public void Crear_Evento(Evento evento)
         {
             try
             {
+                SqlCommand command = new SqlCommand("SP_Evento_Insert", servidor.Conectar());
 
+                command.CommandType = CommandType.StoredProcedure;
 
-                //string sql = "SP_Evento_Insert";
-                SqlCommand command = new SqlCommand("SP_Evento_Insert",servidor.Conectar());
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("id",evento.Id),
+                    new SqlParameter("nombre",evento.Nombre),
+                    new SqlParameter("f_limite",evento.F_Limite),
+                    new SqlParameter("f_entrega",evento.F_Entrega),
+                    new SqlParameter("cupo",evento.Cupo),
+                    new SqlParameter("localizacion",evento.Localizacion),
+                    new SqlParameter("activo",evento.Activo),
+                    new SqlParameter("p_minimo_regalo",evento.P_Minimo_Regalo),
+                    new SqlParameter("p_maximo_regalo",evento.P_Maximo_Regalo),
+                    new SqlParameter("grupo",evento.Grupo)
+                };
+                command.Parameters.AddRange(parameters);
+                cargar = command.ExecuteReader();
 
-
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-
-                command.Parameters.AddWithValue("@id", evento.Id);
-                command.Parameters.AddWithValue("@nombre", evento.Nombre);
-                command.Parameters.AddWithValue("@f_limite", evento.F_Limite);
-                command.Parameters.AddWithValue("@f_entrega", evento.F_Entrega);
-                command.Parameters.AddWithValue("@cupo", evento.Cupo);
-                command.Parameters.AddWithValue("@localizacion", evento.Localizacion);
-                command.Parameters.AddWithValue("@activo", evento.Activo);
-                command.Parameters.AddWithValue("@p_minimo_regalo", evento.P_Minimo_Regalo);
-                command.Parameters.AddWithValue("@p_maximo_regalo", evento.P_Maximo_Regalo);
-                command.Parameters.AddWithValue("@grupo", evento.Grupo);
-
-
-
-                command.BeginExecuteNonQuery();
                 servidor.Desconectar();
 
             }
@@ -51,6 +46,37 @@ namespace Amigo_Secreto.Datos
             {
                 throw;
             }
+        }
+
+        public void Actialir(Evento evento)
+        {
+            try
+            {
+                SqlCommand command = new SqlCommand("SP_Evento_Insert", servidor.Conectar());
+
+                SqlParameter[] parametros = new SqlParameter[]
+               {
+                    new SqlParameter("id",evento.Id),
+                    new SqlParameter("nombre",evento.Nombre),
+                    new SqlParameter("f_limite",evento.F_Limite),
+                    new SqlParameter("f_entrega",evento.F_Entrega),
+                    new SqlParameter("cupo",evento.Cupo),
+                    new SqlParameter("localizacion",evento.Localizacion),
+                    new SqlParameter("activo",evento.Activo),
+                    new SqlParameter("p_minimo_regalo",evento.P_Minimo_Regalo),
+                    new SqlParameter("p_maximo_regalo",evento.P_Maximo_Regalo),
+                    new SqlParameter("grupo",evento.Grupo)
+               };
+
+                command.Parameters.AddRange(parametros);
+
+                cargar = command.ExecuteReader();
+            }
+            catch
+            {
+                throw;
+            }
+
         }
     }
 }

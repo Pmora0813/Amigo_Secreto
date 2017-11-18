@@ -29,10 +29,9 @@ namespace Amigo_Secreto.Datos
             }
         }
 
-        public bool Desconectar()
+        public void Desconectar()
         {
-            conn.Close();
-            return true;
+            conn.Close();            
         }
     }
 
