@@ -39,8 +39,9 @@ namespace Amigo_Secreto.Logica
 
         }
 
-
-        
-
+        public void lista_invitados(Lista_Invitados invitado)
+        {
+           
+        }
     }
 }

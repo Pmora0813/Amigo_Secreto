@@ -19,6 +19,8 @@ namespace Amigo_Secreto.Entidades
         public decimal P_Maximo_Regalo { get; set; }
         public bool Grupo { get; set; }
 
-        public List<>
+        public List<Lista_Invitados> lista_invitados { get; set; }
+
+        public List<Grupos> grupos { get; set; } 
     }
 }

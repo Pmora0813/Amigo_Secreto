@@ -49,5 +49,16 @@ namespace Amigo_Secreto
 
 
         }
+
+        private void rbtCrear_Grupo_CheckedChanged(object sender, EventArgs e)
+        {
+            btnCrear_Grupos.Enabled = true;
+        }
+
+        private void rbtNo_Crear_Grupo_CheckedChanged(object sender, EventArgs e)
+        {
+            btnCrear_Grupos.Enabled = false;
+        }
     }
-}
+    }
+

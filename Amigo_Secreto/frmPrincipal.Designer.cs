@@ -31,10 +31,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnEntrar = new System.Windows.Forms.Button();
-            this.btnRegistrar = new System.Windows.Forms.Button();
-            this.txtusuario = new System.Windows.Forms.TextBox();
             this.txtContrasenna = new System.Windows.Forms.TextBox();
+            this.txtusuario = new System.Windows.Forms.TextBox();
+            this.btnRegistrar = new System.Windows.Forms.Button();
+            this.btnEntrar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,15 +75,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Iniciar Sesión";
             // 
-            // btnEntrar
+            // txtContrasenna
             // 
-            this.btnEntrar.Location = new System.Drawing.Point(93, 142);
-            this.btnEntrar.Name = "btnEntrar";
-            this.btnEntrar.Size = new System.Drawing.Size(108, 34);
-            this.btnEntrar.TabIndex = 2;
-            this.btnEntrar.Text = "Entrar";
-            this.btnEntrar.UseVisualStyleBackColor = true;
-            this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
+            this.txtContrasenna.Location = new System.Drawing.Point(120, 78);
+            this.txtContrasenna.Name = "txtContrasenna";
+            this.txtContrasenna.PasswordChar = '*';
+            this.txtContrasenna.Size = new System.Drawing.Size(192, 26);
+            this.txtContrasenna.TabIndex = 5;
+            // 
+            // txtusuario
+            // 
+            this.txtusuario.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtusuario.Location = new System.Drawing.Point(120, 39);
+            this.txtusuario.Name = "txtusuario";
+            this.txtusuario.Size = new System.Drawing.Size(192, 26);
+            this.txtusuario.TabIndex = 4;
             // 
             // btnRegistrar
             // 
@@ -94,26 +100,21 @@
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = true;
             // 
-            // txtusuario
+            // btnEntrar
             // 
-            this.txtusuario.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtusuario.Location = new System.Drawing.Point(120, 39);
-            this.txtusuario.Name = "txtusuario";
-            this.txtusuario.Size = new System.Drawing.Size(192, 26);
-            this.txtusuario.TabIndex = 4;
-            // 
-            // txtContrasenna
-            // 
-            this.txtContrasenna.Location = new System.Drawing.Point(120, 78);
-            this.txtContrasenna.Name = "txtContrasenna";
-            this.txtContrasenna.PasswordChar = '*';
-            this.txtContrasenna.Size = new System.Drawing.Size(192, 26);
-            this.txtContrasenna.TabIndex = 5;
+            this.btnEntrar.Location = new System.Drawing.Point(93, 142);
+            this.btnEntrar.Name = "btnEntrar";
+            this.btnEntrar.Size = new System.Drawing.Size(108, 34);
+            this.btnEntrar.TabIndex = 2;
+            this.btnEntrar.Text = "Entrar";
+            this.btnEntrar.UseVisualStyleBackColor = true;
+            this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(384, 203);
             this.Controls.Add(this.groupBox1);
