@@ -16,7 +16,7 @@ namespace Amigo_Secreto
     public partial class frmPrincipal : Form
     {
         private Administrador_Logica logica_admin;
-       
+
         public frmPrincipal()
         {
             InitializeComponent();
@@ -27,44 +27,46 @@ namespace Amigo_Secreto
         {
 
             Crear_Admin();
-           
+
         }
 
         private void Crear_Admin()
         {
-             
-            
-                Administrador admin = new Administrador();
-                admin.Usuario = "pmora";
-                admin.Contrasenna = "pmora";
-                admin.creado = 1;
-                logica_admin.Guardar(admin);
-               
-            
-            
+
+
+            Administrador admin = new Administrador();
+            admin.Usuario = "pmora";
+            admin.Contrasenna = "pmora";
+            admin.creado = 1;
+            logica_admin.Guardar(admin);
+
+
+
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
+            frmEvento ofrmevento = new frmEvento();
             string usuario = txtusuario.Text;
             string contrasenna = txtContrasenna.Text;
-            
+
             Administrador admin = new Administrador();
             admin.Usuario = usuario;
             admin.Contrasenna = contrasenna;
+            admin.creado = 1;
 
-            if (logica_admin.Validar(admin))
+            if (logica_admin.Validar(admin) == true)
             {
                 MessageBox.Show("Usuario Valido");
-                frmEvento ofrmevento = new frmEvento();
 
-                ofrmevento.Show();
+                //ofrmevento.Show();
             }
             else
             {
                 MessageBox.Show("Usuario Invalido");
+                //ofrmevento.Dispose();
             }
         }
     }
-    
+
 }
