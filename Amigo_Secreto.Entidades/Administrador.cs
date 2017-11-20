@@ -10,6 +10,5 @@ namespace Amigo_Secreto.Entidades
     {
         public string Usuario { get; set; }
         public string Contrasenna { get; set; }
-        public int creado { get; set; }
     }
 }

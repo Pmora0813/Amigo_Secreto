@@ -37,7 +37,6 @@ namespace Amigo_Secreto
             Administrador admin = new Administrador();
             admin.Usuario = "pmora";
             admin.Contrasenna = "pmora";
-            admin.creado = 1;
             logica_admin.Guardar(admin);
 
 

@@ -20,26 +20,48 @@ namespace Amigo_Secreto
             logica = new Evento_Logica();
             InitializeComponent();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCrear_Evento_Click(object sender, EventArgs e)
         {
             Evento evento = new Evento();
-            evento.Id = 1;
-            evento.Nombre = "Prueva";
-            DateTime limite = new DateTime(2018, 3, 15);
-            evento.F_Limite = limite;
-            evento.F_Entrega = new DateTime(2020,3,20);
-            evento.Cupo = 10;
-            evento.Localizacion = "SJ-CR";
-            evento.Activo = true;
-            evento.P_Minimo_Regalo = 500;
-            evento.P_Maximo_Regalo = 1000;
+            evento.Id = (int)npdCodigo.Value;
+            evento.Nombre = txtNombre.Text;
+            evento.F_Entrega = dtpFecha_Evento.Value;
+            evento.F_Limite = dtpFecha_Lim_Inscrip.Value;
 
-            Grupos grupos = new Grupos();
-            grupos.Id = 1;
+            evento.Cupo = (int)npdCan_Invitados.Value;
+            evento.Localizacion = txtLugar.Text;
+            if (rbtActivar_Evento.Checked == true)
+            {
+                evento.Activo = true;
+            }
+            else
+            {
+                if (rbtDesactivar_Evento.Checked == false)
+                {
+                    evento.Activo = false;
+                }
+            }
+
+            evento.P_Minimo_Regalo = Convert.ToInt32(mtbPrecio_Minimo.Text);
+            evento.P_Maximo_Regalo = Convert.ToInt64(mtbPrecio_Maximo.Text);
+
+
+            if (rbtCrear_Grupo.Checked == true)
+            {
+                evento.Grupo = true;
+            }
+            else
+            {
+                if (rbtNo_Crear_Grupo.Checked == false)
+                {
+                    evento.Grupo = false;
+                }
+            }
             try
             {
-                logica.Guardar(evento);
+                //logica.Guardar(evento);
+
+                MessageBox.Show("Se creo un Evento con Exito...!!");
             }
             catch (Exception)
             {
@@ -47,6 +69,22 @@ namespace Amigo_Secreto
                 throw;
             }
 
+            limpiar_Componentes();
+
+        }
+
+        private void limpiar_Componentes()
+        {
+            npdCodigo.Value = 0;
+            txtNombre.Text = "";
+            npdCan_Invitados.Value = 0;
+            txtLugar.Text = "";
+            mtbPrecio_Maximo.Text = "";
+            mtbPrecio_Minimo.Text = "";
+            rbtActivar_Evento.Checked = false;
+            rbtCrear_Grupo.Checked = false;
+            rbtDesactivar_Evento.Checked = false;
+            rbtNo_Crear_Grupo.Checked = false;
 
         }
 
@@ -59,6 +97,8 @@ namespace Amigo_Secreto
         {
             btnCrear_Grupos.Enabled = false;
         }
+
+
     }
-    }
+}
 

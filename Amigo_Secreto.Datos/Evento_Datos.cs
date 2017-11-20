@@ -165,7 +165,7 @@ namespace Amigo_Secreto.Datos
             try
             {
                 conn.Open();
-                string sql = "SP_SeleccionarCategoriaPorId";
+                string sql = "SP_Evento_SelectRow";
                 SqlCommand command = new SqlCommand(sql, conn);
                 command.Parameters.AddWithValue("@Id", id);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
