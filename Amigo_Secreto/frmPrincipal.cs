@@ -26,45 +26,30 @@ namespace Amigo_Secreto
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
 
-            Crear_Admin();
-
-        }
-
-        private void Crear_Admin()
-        {
-
-
-            Administrador admin = new Administrador();
-            admin.Usuario = "pmora";
-            admin.Contrasenna = "pmora";
-            logica_admin.Guardar(admin);
-
-
-
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
             frmEvento ofrmevento = new frmEvento();
-            //string usuario = txtusuario.Text;
-            //string contrasenna = txtContrasenna.Text;
+            string usuario = txtusuario.Text;
+            string contrasenna = txtContrasenna.Text;
 
             //Administrador admin = new Administrador();
             //admin.Usuario = usuario;
             //admin.Contrasenna = contrasenna;
             //admin.creado = 1;
 
-            //if (logica_admin.Validar(admin) == true)
-            //{
-            //    MessageBox.Show("Usuario Valido");
+            if (logica_admin.Validar(usuario, contrasenna))
+            {
+                MessageBox.Show("Usuario Valido");
 
-            //    //ofrmevento.Show();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Usuario Invalido");
-            //    //ofrmevento.Dispose();
-            //}
+                ofrmevento.Show();
+            }
+            else
+            {
+                MessageBox.Show("Usuario Invalido");
+                ofrmevento.Dispose();
+            }
 
 
             ofrmevento.Show();
