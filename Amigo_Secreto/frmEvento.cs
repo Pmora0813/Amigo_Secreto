@@ -98,7 +98,10 @@ namespace Amigo_Secreto
             btnCrear_Grupos.Enabled = false;
         }
 
-
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
     }
 }
 

@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Amigo_Secreto
 {
     public partial class frmPrincipal : Form
@@ -21,6 +22,7 @@ namespace Amigo_Secreto
         {
             InitializeComponent();
             logica_admin = new Administrador_Logica();
+
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
@@ -30,7 +32,8 @@ namespace Amigo_Secreto
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            frmEvento ofrmevento = new frmEvento();
+            frmPrincipal ofrmPrincipal = new frmPrincipal(); ;
+            frmMenu_Administrador ofrm = new frmMenu_Administrador();
             string usuario = txtusuario.Text;
             string contrasenna = txtContrasenna.Text;
 
@@ -39,20 +42,22 @@ namespace Amigo_Secreto
             //admin.Contrasenna = contrasenna;
             //admin.creado = 1;
 
-            if (logica_admin.Validar(usuario, contrasenna))
-            {
-                MessageBox.Show("Usuario Valido");
+            //if (logica_admin.Validar(usuario, contrasenna))
+            //{
+            //    MessageBox.Show("Usuario Valido");
 
-                ofrmevento.Show();
-            }
-            else
-            {
-                MessageBox.Show("Usuario Invalido");
-                ofrmevento.Dispose();
-            }
+            //    ofrmevento.Show();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Usuario Invalido");
+            //    ofrmevento.Dispose();
+            //}
 
 
-            ofrmevento.Show();
+            ofrm.Show();
+            txtContrasenna.Text = "";
+            // Application.Exit();
         }
     }
 
