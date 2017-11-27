@@ -15,6 +15,7 @@ namespace Amigo_Secreto
     public partial class frmEvento : Form
     {
         private Evento_Logica logica;
+        private Evento evento;
         public frmEvento()
         {
             logica = new Evento_Logica();
@@ -22,7 +23,7 @@ namespace Amigo_Secreto
         }
         private void btnCrear_Evento_Click(object sender, EventArgs e)
         {
-            Evento evento = new Evento();
+            evento = new Evento();
             evento.Id = (int)npdCodigo.Value;
             evento.Nombre = txtNombre.Text;
             evento.F_Entrega = dtpFecha_Evento.Value;
@@ -101,6 +102,16 @@ namespace Amigo_Secreto
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Dispose();
+        }
+
+        private void btnInvitaciones_Click(object sender, EventArgs e)
+        {
+            frmEnviar_Invitaciones ofrm = new frmEnviar_Invitaciones();
+
+            //if (evento == null)
+                //throw new Exception("No se ha encontrado un Evento Relacionado");
+            
+            ofrm.Show();
         }
     }
 }

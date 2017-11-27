@@ -58,6 +58,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnCrear_Evento = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnInvitaciones = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.npdCan_Invitados)).BeginInit();
@@ -124,9 +125,9 @@
             this.groupBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox1.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(16, 15);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(684, 364);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -139,9 +140,9 @@
             this.groupBox4.Controls.Add(this.rbtNo_Crear_Grupo);
             this.groupBox4.Controls.Add(this.rbtCrear_Grupo);
             this.groupBox4.Location = new System.Drawing.Point(324, 234);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(251, 90);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
@@ -151,7 +152,7 @@
             // 
             this.btnCrear_Grupos.Enabled = false;
             this.btnCrear_Grupos.Location = new System.Drawing.Point(149, 36);
-            this.btnCrear_Grupos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCrear_Grupos.Margin = new System.Windows.Forms.Padding(4);
             this.btnCrear_Grupos.Name = "btnCrear_Grupos";
             this.btnCrear_Grupos.Size = new System.Drawing.Size(85, 34);
             this.btnCrear_Grupos.TabIndex = 13;
@@ -162,7 +163,7 @@
             // 
             this.rbtNo_Crear_Grupo.AutoSize = true;
             this.rbtNo_Crear_Grupo.Location = new System.Drawing.Point(36, 58);
-            this.rbtNo_Crear_Grupo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbtNo_Crear_Grupo.Margin = new System.Windows.Forms.Padding(4);
             this.rbtNo_Crear_Grupo.Name = "rbtNo_Crear_Grupo";
             this.rbtNo_Crear_Grupo.Size = new System.Drawing.Size(52, 24);
             this.rbtNo_Crear_Grupo.TabIndex = 12;
@@ -176,7 +177,7 @@
             // 
             this.rbtCrear_Grupo.AutoSize = true;
             this.rbtCrear_Grupo.Location = new System.Drawing.Point(36, 28);
-            this.rbtCrear_Grupo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbtCrear_Grupo.Margin = new System.Windows.Forms.Padding(4);
             this.rbtCrear_Grupo.Name = "rbtCrear_Grupo";
             this.rbtCrear_Grupo.Size = new System.Drawing.Size(45, 24);
             this.rbtCrear_Grupo.TabIndex = 11;
@@ -190,7 +191,7 @@
             // 
             this.dtpFecha_Lim_Inscrip.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFecha_Lim_Inscrip.Location = new System.Drawing.Point(108, 258);
-            this.dtpFecha_Lim_Inscrip.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpFecha_Lim_Inscrip.Margin = new System.Windows.Forms.Padding(4);
             this.dtpFecha_Lim_Inscrip.Name = "dtpFecha_Lim_Inscrip";
             this.dtpFecha_Lim_Inscrip.Size = new System.Drawing.Size(157, 26);
             this.dtpFecha_Lim_Inscrip.TabIndex = 7;
@@ -200,7 +201,7 @@
             // 
             this.dtpFecha_Evento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFecha_Evento.Location = new System.Drawing.Point(107, 193);
-            this.dtpFecha_Evento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpFecha_Evento.Margin = new System.Windows.Forms.Padding(4);
             this.dtpFecha_Evento.Name = "dtpFecha_Evento";
             this.dtpFecha_Evento.Size = new System.Drawing.Size(157, 26);
             this.dtpFecha_Evento.TabIndex = 6;
@@ -209,7 +210,7 @@
             // txtLugar
             // 
             this.txtLugar.Location = new System.Drawing.Point(109, 128);
-            this.txtLugar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLugar.Margin = new System.Windows.Forms.Padding(4);
             this.txtLugar.Name = "txtLugar";
             this.txtLugar.Size = new System.Drawing.Size(157, 26);
             this.txtLugar.TabIndex = 4;
@@ -219,7 +220,7 @@
             // 
             this.npdCan_Invitados.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.npdCan_Invitados.Location = new System.Drawing.Point(215, 94);
-            this.npdCan_Invitados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.npdCan_Invitados.Margin = new System.Windows.Forms.Padding(4);
             this.npdCan_Invitados.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -234,7 +235,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(108, 59);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(157, 26);
             this.txtNombre.TabIndex = 2;
@@ -244,7 +245,7 @@
             // 
             this.npdCodigo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.npdCodigo.Location = new System.Drawing.Point(97, 20);
-            this.npdCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.npdCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.npdCodigo.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -262,9 +263,9 @@
             this.groupBox3.Controls.Add(this.rbtDesactivar_Evento);
             this.groupBox3.Controls.Add(this.rbtActivar_Evento);
             this.groupBox3.Location = new System.Drawing.Point(324, 130);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(251, 90);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
@@ -274,7 +275,7 @@
             // 
             this.rbtDesactivar_Evento.AutoSize = true;
             this.rbtDesactivar_Evento.Location = new System.Drawing.Point(36, 58);
-            this.rbtDesactivar_Evento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbtDesactivar_Evento.Margin = new System.Windows.Forms.Padding(4);
             this.rbtDesactivar_Evento.Name = "rbtDesactivar_Evento";
             this.rbtDesactivar_Evento.Size = new System.Drawing.Size(52, 24);
             this.rbtDesactivar_Evento.TabIndex = 11;
@@ -287,7 +288,7 @@
             // 
             this.rbtActivar_Evento.AutoSize = true;
             this.rbtActivar_Evento.Location = new System.Drawing.Point(36, 28);
-            this.rbtActivar_Evento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbtActivar_Evento.Margin = new System.Windows.Forms.Padding(4);
             this.rbtActivar_Evento.Name = "rbtActivar_Evento";
             this.rbtActivar_Evento.Size = new System.Drawing.Size(45, 24);
             this.rbtActivar_Evento.TabIndex = 10;
@@ -303,9 +304,9 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Location = new System.Drawing.Point(324, 26);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(324, 98);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
@@ -315,7 +316,7 @@
             // 
             this.mtbPrecio_Maximo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mtbPrecio_Maximo.Location = new System.Drawing.Point(185, 60);
-            this.mtbPrecio_Maximo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mtbPrecio_Maximo.Margin = new System.Windows.Forms.Padding(4);
             this.mtbPrecio_Maximo.Mask = "0000000000";
             this.mtbPrecio_Maximo.Name = "mtbPrecio_Maximo";
             this.mtbPrecio_Maximo.Size = new System.Drawing.Size(111, 26);
@@ -326,7 +327,7 @@
             // 
             this.mtbPrecio_Minimo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mtbPrecio_Minimo.Location = new System.Drawing.Point(185, 26);
-            this.mtbPrecio_Minimo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mtbPrecio_Minimo.Margin = new System.Windows.Forms.Padding(4);
             this.mtbPrecio_Minimo.Mask = "0000000000";
             this.mtbPrecio_Minimo.Name = "mtbPrecio_Minimo";
             this.mtbPrecio_Minimo.Size = new System.Drawing.Size(111, 26);
@@ -386,7 +387,7 @@
             // btnCrear_Evento
             // 
             this.btnCrear_Evento.Location = new System.Drawing.Point(161, 404);
-            this.btnCrear_Evento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCrear_Evento.Margin = new System.Windows.Forms.Padding(4);
             this.btnCrear_Evento.Name = "btnCrear_Evento";
             this.btnCrear_Evento.Size = new System.Drawing.Size(179, 39);
             this.btnCrear_Evento.TabIndex = 1;
@@ -404,17 +405,28 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // btnInvitaciones
+            // 
+            this.btnInvitaciones.Location = new System.Drawing.Point(373, 404);
+            this.btnInvitaciones.Name = "btnInvitaciones";
+            this.btnInvitaciones.Size = new System.Drawing.Size(170, 38);
+            this.btnInvitaciones.TabIndex = 3;
+            this.btnInvitaciones.Text = "Enviar Invitaciones";
+            this.btnInvitaciones.UseVisualStyleBackColor = true;
+            this.btnInvitaciones.Click += new System.EventHandler(this.btnInvitaciones_Click);
+            // 
             // frmEvento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(716, 477);
+            this.ClientSize = new System.Drawing.Size(716, 506);
+            this.Controls.Add(this.btnInvitaciones);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnCrear_Evento);
             this.Controls.Add(this.groupBox1);
             this.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmEvento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de los Eventos";
@@ -461,5 +473,6 @@
         private System.Windows.Forms.Button btnCrear_Grupos;
         private System.Windows.Forms.Button btnCrear_Evento;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnInvitaciones;
     }
 }

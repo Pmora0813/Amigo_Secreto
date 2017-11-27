@@ -8,7 +8,7 @@ namespace Amigo_Secreto.Datos
 {
     public class Evento_Datos
     {
-        private Servidor servidor;
+        Amigo_Secreto.Datos.Servidor servidor;
         private SqlDataReader cargar;
 
         public Evento_Datos()
@@ -39,8 +39,6 @@ namespace Amigo_Secreto.Datos
                 };
                 command.Parameters.AddRange(parameters);
                 cargar = command.ExecuteReader();
-
-
 
             }
             catch
@@ -91,14 +89,15 @@ namespace Amigo_Secreto.Datos
             }
         }
 
-        public List<Evento> ObtenerTodos()
+        public static List<Evento> ObtenerTodos()
         {
             List<Evento> lista = new List<Evento>();
+            Servidor oservidor = new Servidor();
 
             try
             {
 
-                SqlCommand command = new SqlCommand("SP_Evento_SelectAll", servidor.Conectar());
+                SqlCommand command = new SqlCommand("SP_Evento_SelectAll", oservidor.Conectar());
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 // Ejecuta la sentencia sql en la conexion indicada
                 SqlDataReader reader = command.ExecuteReader();
@@ -116,7 +115,7 @@ namespace Amigo_Secreto.Datos
                     evento.P_Maximo_Regalo = Convert.ToInt32(reader["p_maximo_regalo"]);
                     evento.P_Minimo_Regalo = Convert.ToInt32(reader["p_minimo_regalo"]);
                     evento.Grupo = Convert.ToBoolean(reader["grupo"]);
-                    
+
                     lista.Add(evento);
                 }
             }
@@ -126,7 +125,7 @@ namespace Amigo_Secreto.Datos
             }
             finally
             {
-                servidor.Desconectar();
+                oservidor.Desconectar();
             }
 
             return lista;
@@ -136,13 +135,12 @@ namespace Amigo_Secreto.Datos
         {
             try
             {
-               
+
                 SqlCommand command = new SqlCommand("SP_Evento_DeleteRow", servidor.Conectar());
                 command.Parameters.AddWithValue("@Id", id);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 // Ejecuta la sentencia sql en la conexion indicada
                 command.ExecuteNonQuery();
-
 
             }
             catch
@@ -178,7 +176,7 @@ namespace Amigo_Secreto.Datos
                     cat.Id = Convert.ToInt32(reader["Id"]);
                     cat.Nombre = reader["Nombre"].ToString();
 
-                   // cat.Helados = HeladoDatos.ObtenerPorCategoria(cat.Id);
+                    // cat.Helados = HeladoDatos.ObtenerPorCategoria(cat.Id);
 
                     return cat;
                 }
