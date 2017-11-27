@@ -19,7 +19,7 @@ namespace Amigo_Secreto.Datos
         {
             servidor = new Servidor();
         }
-        
+
         public void Crear_Invitados(Lista_Invitados invitados)
         {
             try
@@ -48,13 +48,13 @@ namespace Amigo_Secreto.Datos
             }
         }
 
-        public List<Lista_Invitados> obtenerTodos()
+        public static List<Lista_Invitados> obtenerTodos()
         {
             List<Lista_Invitados> lista = new List<Lista_Invitados>();
-
+            Servidor oservidor = new Servidor();
             try
             {
-                SqlCommand command = new SqlCommand("SP_lista_invitados_SelectAll", servidor.Conectar());
+                SqlCommand command = new SqlCommand("SP_lista_invitados_SelectAll", oservidor.Conectar());
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 // Ejecuta la sentencia sql en la conexion indicada
                 SqlDataReader reader = command.ExecuteReader();
@@ -75,10 +75,45 @@ namespace Amigo_Secreto.Datos
             }
             finally
             {
-                servidor.Desconectar();
+                oservidor.Desconectar();
             }
 
             return lista;
+        }
+
+        public static Lista_Invitados ObtenerPorId(int id)
+        {
+            Servidor oservidor = new Servidor();
+            try
+            {
+                SqlCommand command = new SqlCommand("SP_lista_invitados_SelectRow", oservidor.Conectar());
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+               
+               
+                command.Parameters.AddWithValue("@Id", id);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                // Ejecuta la sentencia sql en la conexion indicada
+                SqlDataReader reader = command.ExecuteReader();
+                // Cada Read lee un registro de la consulta
+                while (reader.Read())
+                {
+                    Lista_Invitados invitado = new Lista_Invitados();
+                    invitado.Id = Convert.ToInt32(reader["Id"]);
+                    invitado.Correo = reader["Correo"].ToString();
+
+                    return invitado;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return null;
         }
 
 

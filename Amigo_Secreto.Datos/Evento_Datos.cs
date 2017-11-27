@@ -8,7 +8,7 @@ namespace Amigo_Secreto.Datos
 {
     public class Evento_Datos
     {
-        Amigo_Secreto.Datos.Servidor servidor;
+        Servidor servidor;
         private SqlDataReader cargar;
 
         public Evento_Datos()
@@ -172,13 +172,11 @@ namespace Amigo_Secreto.Datos
                 // Cada Read lee un registro de la consulta
                 while (reader.Read())
                 {
-                    Evento cat = new Evento();
-                    cat.Id = Convert.ToInt32(reader["Id"]);
-                    cat.Nombre = reader["Nombre"].ToString();
+                    Evento evento = new Evento();
+                    evento.Id = Convert.ToInt32(reader["Id"]);
+                    evento.Nombre = reader["Nombre"].ToString();
 
-                    // cat.Helados = HeladoDatos.ObtenerPorCategoria(cat.Id);
-
-                    return cat;
+                    return evento;
                 }
             }
             catch
@@ -191,6 +189,12 @@ namespace Amigo_Secreto.Datos
             }
 
             return null;
+        }
+
+
+        public void Guardar_invitados()
+        {
+
         }
     }
 }
