@@ -21,6 +21,11 @@ namespace Amigo_Secreto.Entidades
 
         public List<Lista_Invitados> lista_invitados { get; set; }
 
-        public List<Grupos> grupos { get; set; } 
+        public List<Grupos> grupos { get; set; }
+
+        public override string ToString()
+        {
+            return "Tienes una invitación al evento "+Nombre;
+        }
     }
 }

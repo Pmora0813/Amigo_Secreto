@@ -11,7 +11,7 @@ namespace Amigo_Secreto.Datos
 {
     public class Regalo_Datos
     {
-    {
+    
         Servidor servidor;
         private SqlDataReader cargar;
 

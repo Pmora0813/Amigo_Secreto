@@ -15,10 +15,13 @@ namespace Amigo_Secreto
     public partial class frmEvento : Form
     {
         private Evento_Logica logica;
+        private ListaInv_Logica list_Logica;
         private Evento evento;
         public frmEvento()
         {
             logica = new Evento_Logica();
+            list_Logica = new ListaInv_Logica();
+
             InitializeComponent();
         }
         private void btnCrear_Evento_Click(object sender, EventArgs e)
@@ -60,7 +63,7 @@ namespace Amigo_Secreto
             }
             try
             {
-                //logica.Guardar(evento);
+                logica.Guardar(evento);
 
                 MessageBox.Show("Se creo un Evento con Exito...!!");
             }
@@ -106,12 +109,33 @@ namespace Amigo_Secreto
 
         private void btnInvitaciones_Click(object sender, EventArgs e)
         {
-            frmEnviar_Invitaciones ofrm = new frmEnviar_Invitaciones();
+            try
+            {
+                frmEnviar_Invitaciones ofrm = new frmEnviar_Invitaciones();
 
-            //if (evento == null)
+                //if (evento == null)
                 //throw new Exception("No se ha encontrado un Evento Relacionado");
-            
-            ofrm.Show();
+
+
+                ofrm.Show();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+           
+        }
+
+        private void frmEvento_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            list_Logica.Enviar_Invitaciones(evento.Id);
         }
     }
 }

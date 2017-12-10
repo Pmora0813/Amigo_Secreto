@@ -155,16 +155,12 @@ namespace Amigo_Secreto.Datos
 
         public static Evento ObtenerPorId(int id)
         {
-            // System.Configuration: necesita agregar la referencia
-            string cadena = System.Configuration.ConfigurationManager.ConnectionStrings["Heladeria.UI.Properties.Settings.CadenaConexion"].ConnectionString;
+            Servidor oservidor = new Servidor();
 
-            // Para conectarnos a SQLServer se utiliza ADO.NET -> agregar using System.Data.SqlClient;
-            SqlConnection conn = new SqlConnection(cadena);
             try
             {
-                conn.Open();
-                string sql = "SP_Evento_SelectRow";
-                SqlCommand command = new SqlCommand(sql, conn);
+
+                SqlCommand command = new SqlCommand("SP_Evento_SelectRow", oservidor.Conectar());
                 command.Parameters.AddWithValue("@Id", id);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 // Ejecuta la sentencia sql en la conexion indicada
@@ -185,7 +181,7 @@ namespace Amigo_Secreto.Datos
             }
             finally
             {
-                conn.Close();
+                oservidor.Desconectar();
             }
 
             return null;

@@ -24,7 +24,6 @@ namespace Amigo_Secreto.Datos
             try
             {
                 SqlCommand command = new SqlCommand("SP_Sorteo_Insert", servidor.Conectar());
-
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter[] parameters = new SqlParameter[]
@@ -54,7 +53,7 @@ namespace Amigo_Secreto.Datos
 
             try
             {
-
+                // Ejecuta la sentencia sql en la conexion indicada
                 SqlCommand command = new SqlCommand("SP_Sorteo_Update", servidor.Conectar());
                 command.CommandType = CommandType.StoredProcedure;
 
@@ -64,7 +63,6 @@ namespace Amigo_Secreto.Datos
                     new SqlParameter("id_Grupo",sorteo.Id_Grupo)
                };
                 command.Parameters.AddRange(parameters);
-                // Ejecuta la sentencia sql en la conexion indicada
                 command.ExecuteNonQuery();
             }
             catch
@@ -84,10 +82,10 @@ namespace Amigo_Secreto.Datos
 
             try
             {
-
+                // Ejecuta la sentencia sql en la conexion indicada
                 SqlCommand command = new SqlCommand("SP_Sorteo_SelectAll", oservidor.Conectar());
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                // Ejecuta la sentencia sql en la conexion indicada
+              
                 SqlDataReader reader = command.ExecuteReader();
                 // Cada Read lee un registro de la consulta
                 while (reader.Read())

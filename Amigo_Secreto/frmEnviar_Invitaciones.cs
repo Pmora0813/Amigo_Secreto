@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Amigo_Secreto.Entidades;
+using Amigo_Secreto.Logica;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,40 +17,23 @@ namespace Amigo_Secreto
 {
     public partial class frmEnviar_Invitaciones : Form
     {
+        private ListaInv_Logica logica;
+
+        public int evento { get; set; }
 
         public frmEnviar_Invitaciones()
         {
+            logica = new ListaInv_Logica();
             InitializeComponent();
         }
 
 
-        public static bool ComprobarFormatoEmail(string correo)
-        {
 
-            String sFormato;
-            sFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-            if (Regex.IsMatch(correo, sFormato))
-            {
-                if (Regex.Replace(correo, sFormato, String.Empty).Length == 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
-        }
 
         private void btnVerificar_Click(object sender, EventArgs e)
         {
             string correo = txtCorreo.Text;
-            int codigo = Convert.ToInt32(npdCodigo.Value);
-            if (ComprobarFormatoEmail(correo) == false)
+            if (logica.ComprobarFormatoEmail(correo) == false)
             {
                 txtCorreo.Text = "Dirección no valida";
                 txtCorreo.ForeColor = Color.Red;
@@ -59,11 +44,17 @@ namespace Amigo_Secreto
             {
                 txtCorreo.Text = "Dirección valida";
                 txtCorreo.ForeColor = Color.Green;
+                Lista_Invitados invitados = new Lista_Invitados();
 
-               // dgvInvitaciones.Rows[0].(correo);
+                invitados.Id = logica.ultimo();
+                invitados.Correo = correo;
+                logica.Guardar(invitados);
+
+
 
             }
             tmr_txtCorreo.Start();
+            Refrescar();
         }
 
 
@@ -79,30 +70,51 @@ namespace Amigo_Secreto
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-            ////La cadena "servidor" es el servidor de correo que enviará tu mensaje
-            //string servidor = "smtp.gmail.com";
-            //// Crea el mensaje estableciendo quién lo manda y quién lo recibe
-            //MailMessage mensaje = new MailMessage(
-            //   emisor.Text,
-            //   receptor.Text,
-            //   asunto.Text,
-            //   mensajazo.Text);
+            logica.Enviar_Invitaciones(1);
 
-            ////Envía el mensaje.
-            //SmtpClient cliente = new SmtpClient(servidor);
-            ////Añade credenciales si el servidor lo requiere.
-            //cliente.Credentials = CredentialCache.DefaultNetworkCredentials;
-            //cliente.Send(mensaje);
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
 
 
+        private void Refrescar()
+        {
+            dgvInvitaciones.DataSource = ListaInv_Logica.ObtenerTodos();
+        }
 
+        private void frmEnviar_Invitaciones_Load(object sender, EventArgs e)
+        {
+            Refrescar();
+        }
 
-            for (int i = 1; i < dgvInvitaciones.SelectedRows.Count; i++)
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
             {
+                if (dgvInvitaciones.SelectedRows.Count > 0)
+                {
+                    Lista_Invitados invidato = (Lista_Invitados)dgvInvitaciones.SelectedRows[0].DataBoundItem;
 
-                var corr = (String)dgvInvitaciones.SelectedRows[i].DataBoundItem;
-                MessageBox.Show(corr.ToString());
+                    var result = MessageBox.Show("Seguro?", "Elminar Invitación", MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        logica.Eliminar(invidato.Id);
+
+                        Refrescar();
+                       
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
+        
     }
 }

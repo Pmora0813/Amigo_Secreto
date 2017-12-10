@@ -48,6 +48,31 @@ namespace Amigo_Secreto.Datos
             }
         }
 
+        public static int ObtenerUltimo()
+        {
+            Servidor oservidor = new Servidor();
+            int ultimo;
+            try
+            {
+
+                SqlCommand command = new SqlCommand("SP_lista_invitados_Ultimo", oservidor.Conectar());
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                //SqlDataReader reader = command.ExecuteReader();
+                object valor = command.ExecuteScalar();
+                ultimo = Convert.ToInt32( valor);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                oservidor.Desconectar();
+            }
+            return ultimo;
+        }
+
         public static List<Lista_Invitados> obtenerTodos()
         {
             List<Lista_Invitados> lista = new List<Lista_Invitados>();
@@ -88,8 +113,8 @@ namespace Amigo_Secreto.Datos
             {
                 SqlCommand command = new SqlCommand("SP_lista_invitados_SelectRow", oservidor.Conectar());
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-               
-               
+
+
                 command.Parameters.AddWithValue("@Id", id);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 // Ejecuta la sentencia sql en la conexion indicada
