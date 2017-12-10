@@ -10,6 +10,6 @@ namespace Amigo_Secreto.Entidades
     {
         public int id { get; set; }
         public int Id_Evento { get; set; }
-        public string Id_listaInvitaciones { get; set; }
+        public int Id_listaInvitaciones { get; set; }
     }
 }

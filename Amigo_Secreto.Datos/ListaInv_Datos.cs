@@ -20,7 +20,7 @@ namespace Amigo_Secreto.Datos
             servidor = new Servidor();
         }
 
-        public void Crear_Invitados(Lista_Invitados invitados)
+        public void Guardar(Lista_Invitados invitados)
         {
             try
             {
@@ -31,7 +31,7 @@ namespace Amigo_Secreto.Datos
                 SqlParameter[] parameters = new SqlParameter[]
                 {
                     new SqlParameter("id",invitados.Id),
-                    new SqlParameter("nombre",invitados.Correo)
+                    new SqlParameter("Correos",invitados.Correo)
                 };
                 command.Parameters.AddRange(parameters);
                 cargar = command.ExecuteReader();
@@ -99,7 +99,7 @@ namespace Amigo_Secreto.Datos
                 {
                     Lista_Invitados invitado = new Lista_Invitados();
                     invitado.Id = Convert.ToInt32(reader["Id"]);
-                    invitado.Correo = reader["Correo"].ToString();
+                    invitado.Correo = reader["Correos"].ToString();
 
                     return invitado;
                 }
@@ -110,7 +110,7 @@ namespace Amigo_Secreto.Datos
             }
             finally
             {
-                conn.Close();
+                oservidor.Desconectar();
             }
 
             return null;

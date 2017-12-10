@@ -34,7 +34,7 @@ namespace Amigo_Secreto.Logica
 
             datos = new Evento_Datos();
 
-            datos.Crear_Evento(evento);
+            datos.Guardar(evento);
 
 
         }

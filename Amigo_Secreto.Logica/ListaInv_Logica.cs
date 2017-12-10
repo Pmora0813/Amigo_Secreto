@@ -20,7 +20,7 @@ namespace Amigo_Secreto.Logica
 
             ListaInv_Datos datos = new ListaInv_Datos();
 
-            datos.Crear_Invitados(l_Invidatos);
+            datos.Guardar(l_Invidatos);
         }
 
         public void Eliminar(int id)

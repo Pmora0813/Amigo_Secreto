@@ -60,7 +60,7 @@ namespace Amigo_Secreto
                 txtCorreo.Text = "Dirección valida";
                 txtCorreo.ForeColor = Color.Green;
 
-                dgvInvitaciones.Rows[0].(correo);
+               // dgvInvitaciones.Rows[0].(correo);
 
             }
             tmr_txtCorreo.Start();

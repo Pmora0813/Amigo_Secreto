@@ -16,7 +16,7 @@ namespace Amigo_Secreto.Datos
             servidor = new Servidor();
 
         }
-        public void Crear_Evento(Evento evento)
+        public void Guardar(Evento evento)
         {
             try
             {
