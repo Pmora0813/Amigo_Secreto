@@ -9,7 +9,6 @@ namespace Amigo_Secreto.Entidades
     public class Sorteo
     {
         public int Id { get; set; }
-        public string Id_Participante { get; set; }
-        public int Id_Evento { get; set; }
+        public int Id_Grupo { get; set; }
     }
 }

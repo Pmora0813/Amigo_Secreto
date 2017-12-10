@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Amigo_Secreto.Datos
 {
-    class Participante_Datos
+    public class Participante_Datos
     {
         Servidor servidor;
         private SqlDataReader cargar;
@@ -116,7 +116,7 @@ namespace Amigo_Secreto.Datos
                     participante.Id_Rol = Convert.ToInt32(reader["id_Rol"]);
                     participante.Id_Regalo = Convert.ToInt32(reader["id_Regalo"]);
                     participante.Id_Evento = Convert.ToInt32(reader["id_Evento"]);
-                    
+
                     lista.Add(participante);
                 }
             }
