@@ -10,7 +10,7 @@ namespace Amigo_Secreto.Logica
 {
     public class Evento_Logica
     {
-        private Evento_Datos datos;
+        private Evento_Datos datos = new Evento_Datos();
         public void Guardar(Evento evento)
         {
             if (evento == null)
@@ -41,10 +41,13 @@ namespace Amigo_Secreto.Logica
 
         public void Eliminar(int id)
         {
-            datos = new Evento_Datos();
+            
             datos.Eliminar(id);
         }
-
+        public void Actualizar(Evento evento)
+        {
+            datos.Actualizar(evento);
+        }
         public static List<Evento> ObtenerTodos()
         {
             return Evento_Datos.ObtenerTodos();

@@ -28,5 +28,17 @@ namespace Amigo_Secreto
             ofrm.Show();
 
         }
+
+        private void modificarEventoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmModificar_Evento ofrm = new frmModificar_Evento();
+            ofrm.Show();
+        }
+
+        private void consultarEventosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConsultar_Evento ofrm = new frmConsultar_Evento();
+            ofrm.Show();
+        }
     }
 }

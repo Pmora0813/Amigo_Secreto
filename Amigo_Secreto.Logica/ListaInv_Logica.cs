@@ -69,54 +69,39 @@ namespace Amigo_Secreto.Logica
         }
 
 
-        public void Enviar_Invitaciones(int idEvento)
+
+
+        public void enviarInvitacion()
         {
+            string micorreo = "pmora0813@hotmail.com";
+            string pass = "Pablomora0813";
+            string asunto = "Invitacion para el Amigo Secreto";
+            string contenido = "Regitrate en el evento y Comparte con tus Amigos";
 
-
-            Evento evento = Evento_Datos.ObtenerPorId(idEvento);
-            ////La cadena "servidor" es el servidor de correo que enviará tu mensaje
-
-            // Creando objeto MailMessage
-
-            MailMessage email = new MailMessage();
-            email.To.Add(new MailAddress("pablomora25@gmail.com"));
-
-            foreach (Lista_Invitados correos1 in ListaInv_Datos.obtenerTodos())
+            using (SmtpClient client = new SmtpClient("smtp.live.com", 2525))
             {
-                email.From = new MailAddress(correos1.Correo);
-                email.Subject = "Asunto ( Invitacion " + DateTime.Now.ToString("dd / MMM / yyy hh:mm:ss") + " ) ";
-                email.Body = "Registrarte al Evento y comparte con tus amigos";
-                email.IsBodyHtml = true;
-                email.Priority = MailPriority.Normal;
-
-
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 2525;
-                smtp.EnableSsl = false;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("pablomora25@gmail.com", "**********");
-
-                string output = null;
-
-
-                try
+                foreach (Lista_Invitados correos in ListaInv_Datos.obtenerTodos())
                 {
-                    smtp.Send(email);
-                    email.Dispose();
-                    output = "Corre electrónico fue enviado satisfactoriamente.";
-                }
-                catch (Exception ex)
-                {
-                    output = "Error enviando correo electrónico: " + ex.Message;
-                }
+                    client.EnableSsl = true;
+                    client.Credentials = new NetworkCredential(micorreo, pass);
+                    MailMessage mensaje = new MailMessage(micorreo, correos.Correo, asunto, contenido);
 
-                Console.WriteLine(output);
+
+                    try
+                    {
+                        client.Send(mensaje);
+
+                    }
+                    catch
+
+                    {
+                        throw;
+                    }
+
+                }
             }
-
-
         }
 
-    
-}
+
+    }
 }

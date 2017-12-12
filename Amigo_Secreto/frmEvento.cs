@@ -46,9 +46,17 @@ namespace Amigo_Secreto
                 }
             }
 
+            if (mtbPrecio_Maximo.Text.Equals(""))
+                throw new ArgumentException("El Precio tiene que ser mayor a Cero");
+
+            if (mtbPrecio_Minimo.Text.Equals(""))
+                throw new ArgumentException("El Precio tiene que ser mayor a Cero");
+
             evento.P_Minimo_Regalo = Convert.ToInt32(mtbPrecio_Minimo.Text);
+
             evento.P_Maximo_Regalo = Convert.ToInt64(mtbPrecio_Maximo.Text);
 
+            
 
             if (rbtCrear_Grupo.Checked == true)
             {
@@ -67,7 +75,7 @@ namespace Amigo_Secreto
 
                 MessageBox.Show("Se creo un Evento con Exito...!!");
             }
-            catch (Exception)
+            catch
             {
 
                 throw;
@@ -135,7 +143,7 @@ namespace Amigo_Secreto
 
         private void button1_Click(object sender, EventArgs e)
         {
-            list_Logica.Enviar_Invitaciones(evento.Id);
+            list_Logica.enviarInvitacion();
         }
     }
 }

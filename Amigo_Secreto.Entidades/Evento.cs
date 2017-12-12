@@ -21,11 +21,43 @@ namespace Amigo_Secreto.Entidades
 
         public List<Lista_Invitados> lista_invitados { get; set; }
 
-        public List<Grupos> grupos { get; set; }
+        public List<Participante> Participante { get; set; }
 
-        public override string ToString()
-        {
-            return "Tienes una invitación al evento "+Nombre;
-        }
+        //public override string ToString()
+        //{
+        //    StringBuilder evento = new StringBuilder();
+        //    evento.Append("\nCodido: " + Id+"\n");
+        //    evento.Append("\nNombre: " + Nombre);
+        //    evento.Append("\nFecha limite de inscripciones: " + F_Limite);
+        //    evento.Append("\nFecha de entrega del regalo: " + F_Entrega);
+        //    evento.Append("\nCantidad de personas: " + Cupo);
+        //    evento.Append("\nLugar de realización del evento: " + Localizacion);
+        //    if (Activo == true)
+        //    {
+        //        evento.Append("\nEvento avtivo: si");
+        //    }
+        //    else
+        //    {
+        //        evento.Append("\nEvento avtivo: no");
+        //    }
+        //    evento.Append("\nPrecio minimo del regalo: " + P_Minimo_Regalo);
+        //    evento.Append("\nPrecio maximo del regalo: " + P_Maximo_Regalo);
+
+        //    if (Grupo == true)
+        //    {
+        //        evento.Append("\nSegrearon grupos: Si");
+        //    }
+        //    else
+        //    {
+
+        //        evento.Append("Segrearon grupos: No");
+        //    }
+        //        return evento.ToString();
+        //    }
+
+        //public override string ToString()
+        //{
+        //    return Nombre;
+        //}
     }
-}
+    }

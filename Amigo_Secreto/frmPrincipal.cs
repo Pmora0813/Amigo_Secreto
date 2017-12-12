@@ -59,6 +59,12 @@ namespace Amigo_Secreto
             txtContrasenna.Text = "";
             // Application.Exit();
         }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            frmRegisto_Participantes ofrm = new frmRegisto_Participantes();
+            ofrm.Show();
+        }
     }
 
 }

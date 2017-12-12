@@ -196,5 +196,46 @@ namespace Amigo_Secreto.Datos
             return null;
         }
 
+        public static List<Participante> ObtenerPaticipantes_PorEvento(int id)
+        {
+            List<Participante> lista = new List<Participante>();
+            Servidor oservidor = new Servidor();
+
+            try
+            {
+
+                SqlCommand command = new SqlCommand("SP_Participante_Select_PorEvento", oservidor.Conectar());
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                // Ejecuta la sentencia sql en la conexion indicada
+                SqlDataReader reader = command.ExecuteReader();
+                // Cada Read lee un registro de la consulta
+                while (reader.Read())
+                {
+                    Participante participante = new Participante();
+                    participante.Correo = reader["id_correo"].ToString();
+                    participante.Nombre = reader["Nombre"].ToString();
+                    participante.Genero = Convert.ToChar(reader["genero"]);
+                    participante.Telefono = Convert.ToInt32(reader["telefono"]);
+                    //participante.Foto = Convert.ToSByte(reader["foto"].ToString());
+                    participante.Registrado = Convert.ToBoolean(reader["registrado"]);
+                    participante.Id_Rol = Convert.ToInt32(reader["id_Rol"]);
+                    participante.Id_Regalo = Convert.ToInt32(reader["id_Regalo"]);
+                    participante.Id_Evento = Convert.ToInt32(reader["id_Evento"]);
+
+                    lista.Add(participante);
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                oservidor.Desconectar();
+            }
+
+            return lista;
+        }
+
     }
 }

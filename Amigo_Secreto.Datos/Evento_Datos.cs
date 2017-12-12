@@ -168,10 +168,23 @@ namespace Amigo_Secreto.Datos
                 // Cada Read lee un registro de la consulta
                 while (reader.Read())
                 {
+
                     Evento evento = new Evento();
                     evento.Id = Convert.ToInt32(reader["Id"]);
                     evento.Nombre = reader["Nombre"].ToString();
+                    evento.F_Limite = Convert.ToDateTime(reader["f_limite"]);
+                    evento.F_Entrega = Convert.ToDateTime(reader["f_entrega"]);
+                    evento.Cupo = Convert.ToInt32(reader["cupo"]);
+                    evento.Localizacion = reader["localizacion"].ToString();
+                    evento.Activo = Convert.ToBoolean(reader["activo"].ToString());
+                    evento.P_Maximo_Regalo = Convert.ToInt32(reader["p_maximo_regalo"]);
+                    evento.P_Minimo_Regalo = Convert.ToInt32(reader["p_minimo_regalo"]);
+                    evento.Grupo = Convert.ToBoolean(reader["grupo"]);
 
+                    evento.lista_invitados = ListaInv_Datos.obtenerTodos();
+
+                    evento.Participante = Participante_Datos.ObtenerPaticipantes_PorEvento(evento.Id);
+                     
                     return evento;
                 }
             }
