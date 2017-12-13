@@ -13,8 +13,12 @@ namespace Amigo_Secreto.Logica
 {
     public class ListaInv_Logica
     {
+
+        char[] delimitador_cc = { ',' };
+        char[] delimitador_adjunto = { '|' };
         ListaInv_Datos datos;
         //Evento_Datos eDados;
+
         public void Guardar(Lista_Invitados l_Invidatos)
         {
             if (l_Invidatos == null)
@@ -68,40 +72,59 @@ namespace Amigo_Secreto.Logica
             return ListaInv_Datos.ObtenerUltimo();
         }
 
-
-
-
-        public void enviarInvitacion()
+        
+        public void enviar_correo()
         {
-            string micorreo = "pmora0813@hotmail.com";
-            string pass = "Pablomora0813";
-            string asunto = "Invitacion para el Amigo Secreto";
-            string contenido = "Regitrate en el evento y Comparte con tus Amigos";
-
-            using (SmtpClient client = new SmtpClient("smtp.live.com", 2525))
+            string host = "smtp-mail.outlook.com";
+            int puerto = 587;
+            string remitente = "pmora0813@hotmail.com";
+            string contraseña = "Pablomora0813";
+            string nombre = "Pablo";
+            foreach (Lista_Invitados invitados in Logica.ListaInv_Logica.ObtenerTodos())
             {
-                foreach (Lista_Invitados correos in ListaInv_Datos.obtenerTodos())
+                string destinatarios = invitados.Correo;
+                string cc = "";
+                string asunto = "Invitacion al Evento";
+                string adjuntos= "";
+                string cuerpo = "Registrate en el evento y comparte con tus Amigos";
+                try
                 {
-                    client.EnableSsl = true;
-                    client.Credentials = new NetworkCredential(micorreo, pass);
-                    MailMessage mensaje = new MailMessage(micorreo, correos.Correo, asunto, contenido);
+                    SmtpClient cliente = new SmtpClient(host, puerto);
+                    MailMessage correo = new MailMessage();
 
-
-                    try
+                    correo.From = new MailAddress(remitente, nombre);
+                    correo.Body = cuerpo;
+                    correo.Subject = asunto;
+                    if (destinatarios == "") { }
+                    else
                     {
-                        client.Send(mensaje);
-
+                        string[] cadena = destinatarios.Split();
+                        foreach (string word in cadena)
+                            correo.To.Add(word.Trim());
                     }
-                    catch
-
+                    if (cc == "") { }
+                    else
                     {
-                        throw;
+                        string[] cadena1 = cc.Split();
+                        foreach (string word in cadena1) correo.CC.Add(word.Trim());
                     }
-
+                    if (adjuntos == "") { }
+                    else
+                    {
+                        string[] cadena2 = adjuntos.Split();
+                        foreach (string word in cadena2) correo.Attachments.Add(new Attachment(word));
+                    }
+                    cliente.Credentials = new NetworkCredential(remitente, contraseña);
+                    cliente.EnableSsl = true;
+                    cliente.Send(correo);
+                    
+                }
+                catch 
+                {
+                    throw;
                 }
             }
+
         }
-
-
     }
 }

@@ -140,8 +140,7 @@ namespace Amigo_Secreto.Datos
 
             return null;
         }
-
-
+        
         public void Eliminar(int id)
         {
             try

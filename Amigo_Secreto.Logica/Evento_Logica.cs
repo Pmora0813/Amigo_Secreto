@@ -10,7 +10,8 @@ namespace Amigo_Secreto.Logica
 {
     public class Evento_Logica
     {
-        private Evento_Datos datos = new Evento_Datos();
+        private Evento_Datos evento;
+
         public void Guardar(Evento evento)
         {
             if (evento == null)
@@ -32,9 +33,9 @@ namespace Amigo_Secreto.Logica
             if (evento.P_Maximo_Regalo == 0)
                 throw new ArgumentException("Ingrese el costo Maximo para el Regalo");
 
-            datos = new Evento_Datos();
+            this.evento = new Evento_Datos();
 
-            datos.Guardar(evento);
+            this.evento.Guardar(evento);
 
 
         }
@@ -42,17 +43,18 @@ namespace Amigo_Secreto.Logica
         public void Eliminar(int id)
         {
             
-            datos.Eliminar(id);
+            evento.Eliminar(id);
         }
+
         public void Actualizar(Evento evento)
         {
-            datos.Actualizar(evento);
+            this.evento.Actualizar(evento);
         }
+
         public static List<Evento> ObtenerTodos()
         {
             return Evento_Datos.ObtenerTodos();
         }
-
 
         public static Evento ObtenerPorId(int id)
         {

@@ -33,7 +33,6 @@ namespace Amigo_Secreto.Datos
                     new SqlParameter("id",regalo.Id),
                     new SqlParameter("nombre",regalo.Nombre),
                     new SqlParameter("canidad",regalo.Cantida),
-                    new SqlParameter("foto",regalo.Foto),
                     new SqlParameter("enlace",regalo.Enlace),
                     new SqlParameter("deseo",regalo.Deseado),
                     new SqlParameter("descripcion",regalo.Descripcion),
@@ -53,9 +52,7 @@ namespace Amigo_Secreto.Datos
                 servidor.Desconectar();
             }
         }
-
-
-
+        
         public void Actualizar(Regalo regalo)
         {
 
@@ -70,7 +67,6 @@ namespace Amigo_Secreto.Datos
                    new SqlParameter("id",regalo.Id),
                     new SqlParameter("nombre",regalo.Nombre),
                     new SqlParameter("canidad",regalo.Cantida),
-                    new SqlParameter("foto",regalo.Foto),
                     new SqlParameter("enlace",regalo.Enlace),
                     new SqlParameter("deseo",regalo.Deseado),
                     new SqlParameter("descripcion",regalo.Descripcion),
@@ -109,11 +105,10 @@ namespace Amigo_Secreto.Datos
                     regalo.Id = Convert.ToInt32(reader["id"].ToString());
                     regalo.Nombre = reader["Nombre"].ToString();
                     regalo.Cantida = Convert.ToChar(reader["cantidad"]);
-                    //participante.Foto = Convert.ToSByte(reader["foto"].ToString());
                     regalo.Enlace = reader["enlace"].ToString();
                     regalo.Deseado = Convert.ToBoolean(reader["deseo"]);
                     regalo.Descripcion = reader["descripcion"].ToString();
-                    regalo.Id_Participante =reader["id_participante"].ToString();
+                    regalo.Id_Participante =Convert.ToInt32( reader["id_Participante"]);
 
                     lista.Add(regalo);
                 }
@@ -171,11 +166,10 @@ namespace Amigo_Secreto.Datos
                     regalo.Id = Convert.ToInt32(reader["id"].ToString());
                     regalo.Nombre = reader["Nombre"].ToString();
                     regalo.Cantida = Convert.ToChar(reader["cantidad"]);
-                    //participante.Foto = Convert.ToSByte(reader["foto"].ToString());
                     regalo.Enlace = reader["enlace"].ToString();
                     regalo.Deseado = Convert.ToBoolean(reader["deseo"]);
                     regalo.Descripcion = reader["descripcion"].ToString();
-                    regalo.Id_Participante = reader["id_participante"].ToString();
+                    regalo.Id_Participante =Convert.ToInt32( reader["id_Participante"]);
 
 
                     return regalo;
@@ -192,6 +186,68 @@ namespace Amigo_Secreto.Datos
 
             return null;
         }
+        public static int ObtenerUltimo()
+        {
+            Servidor oservidor = new Servidor();
+            int ultimo;
+            try
+            {
 
+                SqlCommand command = new SqlCommand("SP_Regalo_Ultimo", oservidor.Conectar());
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                //SqlDataReader reader = command.ExecuteReader();
+                object valor = command.ExecuteScalar();
+                ultimo = Convert.ToInt32(valor);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                oservidor.Desconectar();
+            }
+            return ultimo;
+        }
+
+        public static List<Regalo> Obtener_Regalos_PorParticipante(int id)
+        {
+            List<Regalo> lista = new List<Regalo>();
+            Servidor oservidor = new Servidor();
+
+            try
+            {
+
+                SqlCommand command = new SqlCommand("SP_Regalo_PorParticipante]", oservidor.Conectar());
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                // Ejecuta la sentencia sql en la conexion indicada
+                SqlDataReader reader = command.ExecuteReader();
+                // Cada Read lee un registro de la consulta
+                while (reader.Read())
+                {
+                    Regalo regalo = new Regalo();
+                    regalo.Id = Convert.ToInt32(reader["id"].ToString());
+                    regalo.Nombre = reader["Nombre"].ToString();
+                    regalo.Cantida = Convert.ToChar(reader["cantidad"]);
+                    regalo.Enlace = reader["enlace"].ToString();
+                    regalo.Deseado = Convert.ToBoolean(reader["deseo"]);
+                    regalo.Descripcion = reader["descripcion"].ToString();
+                    regalo.Id_Participante = Convert.ToInt32(reader["id_Participante"]);
+
+                    lista.Add(regalo);
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                oservidor.Desconectar();
+            }
+
+            return lista;
+        }
     }
 }

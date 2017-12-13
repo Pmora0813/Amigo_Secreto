@@ -13,10 +13,9 @@ namespace Amigo_Secreto.Entidades
         public string Nombre { get; set; }
         public int Cantida { get; set; }
         public bool Deseado { get; set; }
-        public string Descripcion { get; set; }
-        public Image Foto { get; set; }
+        public string Descripcion { get; set; }      
         public string Enlace { get; set; }
-        public string Id_Participante { get; set; }
+        public int Id_Participante { get; set; }
 
     }
 }

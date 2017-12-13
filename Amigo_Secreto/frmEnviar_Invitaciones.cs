@@ -70,7 +70,7 @@ namespace Amigo_Secreto
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-            logica.enviarInvitacion();
+            logica.enviar_correo();
 
         }
 

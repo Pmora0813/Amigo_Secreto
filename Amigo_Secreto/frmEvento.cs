@@ -143,7 +143,7 @@ namespace Amigo_Secreto
 
         private void button1_Click(object sender, EventArgs e)
         {
-            list_Logica.enviarInvitacion();
+            list_Logica.enviar_correo();
         }
     }
 }

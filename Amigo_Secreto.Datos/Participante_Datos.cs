@@ -29,7 +29,8 @@ namespace Amigo_Secreto.Datos
 
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-                    new SqlParameter("id_correo",participante.Correo),
+                    new SqlParameter("id",participante.id),
+                    new SqlParameter("correo",participante.Correo),
                     new SqlParameter("nombre",participante.Nombre),
                     new SqlParameter("genero",participante.Genero),
                     new SqlParameter("telefono",participante.Telefono),
@@ -54,7 +55,30 @@ namespace Amigo_Secreto.Datos
             }
         }
 
+        public static int ObtenerUltimo()
+        {
+            Servidor oservidor = new Servidor();
+            int ultimo;
+            try
+            {
 
+                SqlCommand command = new SqlCommand("SP_Participante_Ultimo", oservidor.Conectar());
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                //SqlDataReader reader = command.ExecuteReader();
+                object valor = command.ExecuteScalar();
+                ultimo = Convert.ToInt32(valor);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                oservidor.Desconectar();
+            }
+            return ultimo;
+        }
 
         public void Actualizar(Participante participante)
         {
@@ -67,7 +91,8 @@ namespace Amigo_Secreto.Datos
 
                 SqlParameter[] parameters = new SqlParameter[]
                {
-                    new SqlParameter("id_correo",participante.Correo),
+                    new SqlParameter("id",participante.id),
+                    new SqlParameter("correo",participante.Correo),
                     new SqlParameter("nombre",participante.Nombre),
                     new SqlParameter("genero",participante.Genero),
                     new SqlParameter("telefono",participante.Telefono),
@@ -107,7 +132,8 @@ namespace Amigo_Secreto.Datos
                 while (reader.Read())
                 {
                     Participante participante = new Participante();
-                    participante.Correo = reader["id_correo"].ToString();
+                    participante.id = Convert.ToInt32(reader["id"]);
+                    participante.Correo = reader["correo"].ToString();
                     participante.Nombre = reader["Nombre"].ToString();
                     participante.Genero = Convert.ToChar(reader["genero"]);
                     participante.Telefono = Convert.ToInt32(reader["telefono"]);
@@ -170,7 +196,8 @@ namespace Amigo_Secreto.Datos
                 while (reader.Read())
                 {
                     Participante participante = new Participante();
-                    participante.Correo = reader["id_correo"].ToString();
+                    participante.id = Convert.ToInt32(reader["id"]);
+                    participante.Correo = reader["correo"].ToString();
                     participante.Nombre = reader["Nombre"].ToString();
                     participante.Genero = Convert.ToChar(reader["genero"]);
                     participante.Telefono = Convert.ToInt32(reader["telefono"]);
@@ -180,6 +207,18 @@ namespace Amigo_Secreto.Datos
                     participante.Id_Regalo = Convert.ToInt32(reader["id_Regalo"]);
                     participante.Id_Evento = Convert.ToInt32(reader["id_Evento"]);
 
+                    foreach (Regalo item in Regalo_Datos.ObtenerTodos())
+                    {
+                        if (item.Deseado==true)
+                        {
+                            participante.regalos_Deseados = Regalo_Datos.Obtener_Regalos_PorParticipante(participante.id);
+                        }
+                        else
+                        {
+                            participante.regalos_No_Deseados = Regalo_Datos.Obtener_Regalos_PorParticipante(participante.id);
+                        }
+                    }
+                    
 
                     return participante;
                 }
@@ -212,7 +251,9 @@ namespace Amigo_Secreto.Datos
                 while (reader.Read())
                 {
                     Participante participante = new Participante();
-                    participante.Correo = reader["id_correo"].ToString();
+
+                    participante.id = Convert.ToInt32(reader["id"]);
+                    participante.Correo = reader["correo"].ToString();
                     participante.Nombre = reader["Nombre"].ToString();
                     participante.Genero = Convert.ToChar(reader["genero"]);
                     participante.Telefono = Convert.ToInt32(reader["telefono"]);
@@ -236,6 +277,8 @@ namespace Amigo_Secreto.Datos
 
             return lista;
         }
+
+
 
     }
 }
