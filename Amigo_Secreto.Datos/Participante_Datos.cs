@@ -143,6 +143,18 @@ namespace Amigo_Secreto.Datos
                     participante.Id_Regalo = Convert.ToInt32(reader["id_Regalo"]);
                     participante.Id_Evento = Convert.ToInt32(reader["id_Evento"]);
 
+                    foreach (Regalo regalo in Regalo_Datos.Obtener_Regalos_PorParticipante(participante.id))
+                    {
+                        if (regalo.Deseado == true)
+                        {
+                            participante.regalos_Deseados = Regalo_Datos.Obtener_Regalos_PorParticipante(participante.id);
+                        }
+                        else
+                        {
+                            participante.regalos_No_Deseados = Regalo_Datos.Obtener_Regalos_PorParticipante(participante.id);
+                        }
+                    }
+
                     lista.Add(participante);
                 }
             }
@@ -209,7 +221,7 @@ namespace Amigo_Secreto.Datos
 
                     foreach (Regalo item in Regalo_Datos.ObtenerTodos())
                     {
-                        if (item.Deseado==true)
+                        if (item.Deseado == true)
                         {
                             participante.regalos_Deseados = Regalo_Datos.Obtener_Regalos_PorParticipante(participante.id);
                         }
@@ -218,7 +230,7 @@ namespace Amigo_Secreto.Datos
                             participante.regalos_No_Deseados = Regalo_Datos.Obtener_Regalos_PorParticipante(participante.id);
                         }
                     }
-                    
+
 
                     return participante;
                 }

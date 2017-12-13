@@ -23,7 +23,7 @@ namespace Amigo_Secreto.Logica
         {
             if (l_Invidatos == null)
                 throw new ArgumentException("No se tiene Invidatos");
-            if (l_Invidatos.Id < 0)
+            if (l_Invidatos.Id <= -1)
                 throw new ArgumentException("El codigo No corresponde");
 
             datos = new ListaInv_Datos();
@@ -69,7 +69,7 @@ namespace Amigo_Secreto.Logica
 
         public int ultimo()
         {
-            return ListaInv_Datos.ObtenerUltimo();
+            return ListaInv_Datos.ObtenerUltimo()+1;
         }
 
         

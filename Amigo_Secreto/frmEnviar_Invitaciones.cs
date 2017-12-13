@@ -44,6 +44,7 @@ namespace Amigo_Secreto
             {
                 txtCorreo.Text = "Dirección valida";
                 txtCorreo.ForeColor = Color.Green;
+
                 Lista_Invitados invitados = new Lista_Invitados();
 
                 invitados.Id = logica.ultimo();
