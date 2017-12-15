@@ -55,9 +55,9 @@ namespace Amigo_Secreto.Entidades
         //        return evento.ToString();
         //    }
 
-        //public override string ToString()
-        //{
-        //    return Nombre;
-        //}
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
     }

@@ -30,9 +30,9 @@
         {
             this.btnConsultar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lstConsukltar = new System.Windows.Forms.ListBox();
             this.mskCodigo = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.lstConsukltar = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +60,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Consulta";
             // 
+            // lstConsukltar
+            // 
+            this.lstConsukltar.FormattingEnabled = true;
+            this.lstConsukltar.ItemHeight = 20;
+            this.lstConsukltar.Location = new System.Drawing.Point(24, 89);
+            this.lstConsukltar.Name = "lstConsukltar";
+            this.lstConsukltar.Size = new System.Drawing.Size(477, 264);
+            this.lstConsukltar.TabIndex = 3;
+            // 
             // mskCodigo
             // 
             this.mskCodigo.Location = new System.Drawing.Point(201, 38);
@@ -78,19 +87,11 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Codigo del Evento";
             // 
-            // lstConsukltar
-            // 
-            this.lstConsukltar.FormattingEnabled = true;
-            this.lstConsukltar.ItemHeight = 20;
-            this.lstConsukltar.Location = new System.Drawing.Point(24, 89);
-            this.lstConsukltar.Name = "lstConsukltar";
-            this.lstConsukltar.Size = new System.Drawing.Size(477, 264);
-            this.lstConsukltar.TabIndex = 3;
-            // 
             // frmConsultar_Evento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(542, 392);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmConsultar_Evento";

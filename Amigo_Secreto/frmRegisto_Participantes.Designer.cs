@@ -28,15 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.dtgRegalos = new System.Windows.Forms.DataGridView();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Deasado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtEnlace = new System.Windows.Forms.TextBox();
             this.btnIngresar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -57,8 +53,6 @@
             this.cmbCamara = new System.Windows.Forms.ComboBox();
             this.btnIniciar = new System.Windows.Forms.Button();
             this.cmbevento = new System.Windows.Forms.ComboBox();
-            this.sPEventoSelectAllBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.amigo_SecretoDataSet = new Amigo_Secreto.Amigo_SecretoDataSet();
             this.mskTelefo = new System.Windows.Forms.MaskedTextBox();
             this.rbnFemenino = new System.Windows.Forms.RadioButton();
             this.rbtnMasc = new System.Windows.Forms.RadioButton();
@@ -69,15 +63,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.sP_Evento_SelectAllTableAdapter = new Amigo_Secreto.Amigo_SecretoDataSetTableAdapters.SP_Evento_SelectAllTableAdapter();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgRegalos)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.npdCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctCamara)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sPEventoSelectAllBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.amigo_SecretoDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -110,7 +101,7 @@
             // btnRegistrar
             // 
             this.btnRegistrar.Location = new System.Drawing.Point(374, 604);
-            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(132, 48);
             this.btnRegistrar.TabIndex = 44;
@@ -120,6 +111,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnEliminar);
             this.groupBox2.Controls.Add(this.dtgRegalos);
             this.groupBox2.Controls.Add(this.txtEnlace);
             this.groupBox2.Controls.Add(this.btnIngresar);
@@ -135,72 +127,48 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(380, 38);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(408, 520);
             this.groupBox2.TabIndex = 43;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista de Regalos";
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(294, 256);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(109, 33);
+            this.btnEliminar.TabIndex = 17;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // dtgRegalos
             // 
-            this.dtgRegalos.AllowUserToAddRows = false;
             this.dtgRegalos.AllowUserToDeleteRows = false;
+            this.dtgRegalos.AllowUserToOrderColumns = true;
             this.dtgRegalos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgRegalos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Codigo,
-            this.Nombre,
-            this.Cantidad,
-            this.Deasado});
-            this.dtgRegalos.Location = new System.Drawing.Point(18, 303);
-            this.dtgRegalos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtgRegalos.Location = new System.Drawing.Point(18, 294);
+            this.dtgRegalos.Margin = new System.Windows.Forms.Padding(2);
             this.dtgRegalos.Name = "dtgRegalos";
-            this.dtgRegalos.ReadOnly = true;
             this.dtgRegalos.RowTemplate.Height = 24;
-            this.dtgRegalos.Size = new System.Drawing.Size(371, 194);
+            this.dtgRegalos.Size = new System.Drawing.Size(385, 203);
             this.dtgRegalos.TabIndex = 16;
-            // 
-            // Codigo
-            // 
-            this.Codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            // 
-            // Deasado
-            // 
-            this.Deasado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Deasado.HeaderText = "Deasado";
-            this.Deasado.Name = "Deasado";
-            this.Deasado.ReadOnly = true;
             // 
             // txtEnlace
             // 
             this.txtEnlace.Location = new System.Drawing.Point(266, 157);
-            this.txtEnlace.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEnlace.Margin = new System.Windows.Forms.Padding(2);
             this.txtEnlace.Name = "txtEnlace";
             this.txtEnlace.Size = new System.Drawing.Size(138, 26);
             this.txtEnlace.TabIndex = 15;
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(266, 214);
-            this.btnIngresar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnIngresar.Location = new System.Drawing.Point(293, 188);
+            this.btnIngresar.Margin = new System.Windows.Forms.Padding(2);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(111, 58);
             this.btnIngresar.TabIndex = 14;
@@ -211,7 +179,7 @@
             // btnBuscar
             // 
             this.btnBuscar.Location = new System.Drawing.Point(117, 203);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(88, 27);
             this.btnBuscar.TabIndex = 13;
@@ -222,7 +190,7 @@
             // txtadjuntos
             // 
             this.txtadjuntos.Location = new System.Drawing.Point(82, 172);
-            this.txtadjuntos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtadjuntos.Margin = new System.Windows.Forms.Padding(2);
             this.txtadjuntos.Name = "txtadjuntos";
             this.txtadjuntos.Size = new System.Drawing.Size(125, 26);
             this.txtadjuntos.TabIndex = 12;
@@ -252,9 +220,9 @@
             this.groupBox3.Controls.Add(this.rbtnNo);
             this.groupBox3.Controls.Add(this.rbtnSi);
             this.groupBox3.Location = new System.Drawing.Point(14, 103);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(192, 64);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
@@ -264,7 +232,7 @@
             // 
             this.rbtnNo.AutoSize = true;
             this.rbtnNo.Location = new System.Drawing.Point(68, 31);
-            this.rbtnNo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbtnNo.Margin = new System.Windows.Forms.Padding(2);
             this.rbtnNo.Name = "rbtnNo";
             this.rbtnNo.Size = new System.Drawing.Size(49, 24);
             this.rbtnNo.TabIndex = 5;
@@ -276,7 +244,7 @@
             // 
             this.rbtnSi.AutoSize = true;
             this.rbtnSi.Location = new System.Drawing.Point(9, 31);
-            this.rbtnSi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbtnSi.Margin = new System.Windows.Forms.Padding(2);
             this.rbtnSi.Name = "rbtnSi";
             this.rbtnSi.Size = new System.Drawing.Size(43, 24);
             this.rbtnSi.TabIndex = 4;
@@ -297,7 +265,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(227, 61);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(177, 64);
@@ -306,7 +274,7 @@
             // npdCantidad
             // 
             this.npdCantidad.Location = new System.Drawing.Point(92, 65);
-            this.npdCantidad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.npdCantidad.Margin = new System.Windows.Forms.Padding(2);
             this.npdCantidad.Name = "npdCantidad";
             this.npdCantidad.Size = new System.Drawing.Size(47, 26);
             this.npdCantidad.TabIndex = 3;
@@ -315,7 +283,7 @@
             // txtNombre_Regalo
             // 
             this.txtNombre_Regalo.Location = new System.Drawing.Point(93, 32);
-            this.txtNombre_Regalo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNombre_Regalo.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombre_Regalo.Name = "txtNombre_Regalo";
             this.txtNombre_Regalo.Size = new System.Drawing.Size(114, 26);
             this.txtNombre_Regalo.TabIndex = 2;
@@ -384,24 +352,12 @@
             // 
             // cmbevento
             // 
-            this.cmbevento.DataSource = this.sPEventoSelectAllBindingSource;
-            this.cmbevento.DisplayMember = "nombre";
             this.cmbevento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbevento.FormattingEnabled = true;
             this.cmbevento.Location = new System.Drawing.Point(122, 38);
             this.cmbevento.Name = "cmbevento";
             this.cmbevento.Size = new System.Drawing.Size(203, 28);
             this.cmbevento.TabIndex = 13;
-            // 
-            // sPEventoSelectAllBindingSource
-            // 
-            this.sPEventoSelectAllBindingSource.DataMember = "SP_Evento_SelectAll";
-            this.sPEventoSelectAllBindingSource.DataSource = this.amigo_SecretoDataSet;
-            // 
-            // amigo_SecretoDataSet
-            // 
-            this.amigo_SecretoDataSet.DataSetName = "Amigo_SecretoDataSet";
-            this.amigo_SecretoDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // mskTelefo
             // 
@@ -492,14 +448,11 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Correo";
             // 
-            // sP_Evento_SelectAllTableAdapter
-            // 
-            this.sP_Evento_SelectAllTableAdapter.ClearBeforeFill = true;
-            // 
             // frmRegisto_Participantes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(817, 701);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmRegisto_Participantes";
@@ -515,8 +468,6 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.npdCantidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctCamara)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sPEventoSelectAllBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.amigo_SecretoDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -535,9 +486,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private Amigo_SecretoDataSet amigo_SecretoDataSet;
-        private System.Windows.Forms.BindingSource sPEventoSelectAllBindingSource;
-        private Amigo_SecretoDataSetTableAdapters.SP_Evento_SelectAllTableAdapter sP_Evento_SelectAllTableAdapter;
         private System.Windows.Forms.PictureBox pctCamara;
         private System.Windows.Forms.Label lblCamera;
         private System.Windows.Forms.ComboBox cmbCamara;
@@ -559,10 +507,7 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtEnlace;
         private System.Windows.Forms.DataGridView dtgRegalos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Deasado;
         private System.Windows.Forms.Button btnRegistrar;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

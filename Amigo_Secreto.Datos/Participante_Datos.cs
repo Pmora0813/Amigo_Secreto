@@ -37,11 +37,19 @@ namespace Amigo_Secreto.Datos
                     new SqlParameter("telefono",participante.Telefono),
                     new SqlParameter("registrado",participante.Registrado),
                     new SqlParameter("id_Rol",participante.Id_Rol),
-                    new SqlParameter("id_Regalo",participante.Id_Regalo),
                     new SqlParameter("id_Evento",participante.Id_Evento)
 
                 };
-                
+                command.Parameters.Add("@foto", SqlDbType.Image);
+
+                // Stream usado como buffer
+                System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                // Se guarda la imagen en el buffer
+                ////foto.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                // Se extraen los bytes del buffer para asignarlos como valor para el 
+                // parámetro.
+                command.Parameters["@foto"].Value = ms.GetBuffer();
+
                 command.Parameters.AddRange(parameters);
                 cargar = command.ExecuteReader();
 
@@ -100,7 +108,6 @@ namespace Amigo_Secreto.Datos
                     new SqlParameter("foto",participante.Foto),
                     new SqlParameter("registrado",participante.Registrado),
                     new SqlParameter("id_Rol",participante.Id_Rol),
-                    new SqlParameter("id_Regalo",participante.Id_Regalo),
                     new SqlParameter("id_Evento",participante.Id_Evento)
                };
                 command.Parameters.AddRange(parameters);
@@ -142,7 +149,6 @@ namespace Amigo_Secreto.Datos
                     //participante.Foto = Convert.ToSByte(reader["foto"].ToString());
                     participante.Registrado = Convert.ToBoolean(reader["registrado"]);
                     participante.Id_Rol = Convert.ToInt32(reader["id_Rol"]);
-                    participante.Id_Regalo = Convert.ToInt32(reader["id_Regalo"]);
                     participante.Id_Evento = Convert.ToInt32(reader["id_Evento"]);
 
                     foreach (Regalo regalo in Regalo_Datos.Obtener_Regalos_PorParticipante(participante.id))
@@ -218,7 +224,6 @@ namespace Amigo_Secreto.Datos
                     //participante.Foto = Convert.ToSByte(reader["foto"].ToString());
                     participante.Registrado = Convert.ToBoolean(reader["registrado"]);
                     participante.Id_Rol = Convert.ToInt32(reader["id_Rol"]);
-                    participante.Id_Regalo = Convert.ToInt32(reader["id_Regalo"]);
                     participante.Id_Evento = Convert.ToInt32(reader["id_Evento"]);
 
                     foreach (Regalo item in Regalo_Datos.ObtenerTodos())
@@ -274,7 +279,6 @@ namespace Amigo_Secreto.Datos
                     //participante.Foto = Convert.ToSByte(reader["foto"].ToString());
                     participante.Registrado = Convert.ToBoolean(reader["registrado"]);
                     participante.Id_Rol = Convert.ToInt32(reader["id_Rol"]);
-                    participante.Id_Regalo = Convert.ToInt32(reader["id_Regalo"]);
                     participante.Id_Evento = Convert.ToInt32(reader["id_Evento"]);
 
                     lista.Add(participante);

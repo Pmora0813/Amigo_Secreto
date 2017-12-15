@@ -15,7 +15,7 @@ namespace Amigo_Secreto.Logica
         {
             if (regalo == null)
                 throw new ArgumentException("No se a creado Un Regalo");
-            if (regalo.Id <= 0)
+            if (regalo.Id < 0)
                 throw new ArgumentException("El ID tiene que ser mayor a Cero");
             if (regalo.Nombre.Equals(" "))
                 throw new ArgumentException("Ingrese el Nombre");
@@ -57,5 +57,9 @@ namespace Amigo_Secreto.Logica
             return Regalo_Datos.ObtenerUltimo();
         }
 
+        public static List<Regalo> ObtenerTodos_PorParticipante(int id)
+        {
+            return Regalo_Datos.Obtener_Regalos_PorParticipante(id);
+        }
     }
 }

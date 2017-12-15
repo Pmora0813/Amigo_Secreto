@@ -32,7 +32,7 @@ namespace Amigo_Secreto.Datos
                 {
                     new SqlParameter("id",regalo.Id),
                     new SqlParameter("nombre",regalo.Nombre),
-                    new SqlParameter("canidad",regalo.Cantida),
+                    new SqlParameter("cantidad",regalo.Cantida),
                     new SqlParameter("enlace",regalo.Enlace),
                     new SqlParameter("deseo",regalo.Deseado),
                     new SqlParameter("descripcion",regalo.Descripcion),
@@ -155,7 +155,7 @@ namespace Amigo_Secreto.Datos
             {
 
                 SqlCommand command = new SqlCommand("SP_Regalo_SelectRow", oservidor.Conectar());
-                command.Parameters.AddWithValue("@Id", id);
+                command.Parameters.AddWithValue("@id", id);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 // Ejecuta la sentencia sql en la conexion indicada
                 SqlDataReader reader = command.ExecuteReader();
@@ -219,7 +219,8 @@ namespace Amigo_Secreto.Datos
             try
             {
 
-                SqlCommand command = new SqlCommand("SP_Regalo_PorParticipante]", oservidor.Conectar());
+                SqlCommand command = new SqlCommand("SP_Regalo_PorParticipante", oservidor.Conectar());
+                command.Parameters.AddWithValue("@id_Participante", id);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 // Ejecuta la sentencia sql en la conexion indicada
                 SqlDataReader reader = command.ExecuteReader();

@@ -18,14 +18,16 @@ using AForge.Video;
 using Amigo_Secreto.Logica;
 using Amigo_Secreto.Entidades;
 
+
 namespace Amigo_Secreto
 {
     public partial class frmRegisto_Participantes : Form
     {
         public Participante_Logica logica_Parti;
         public Regalo_Logica logica_Regalo;
+        public Rol_Logica logica_Roles;
         public Participante participante;
-
+        public Regalo regalo;
         //CODIGO PARA VER WEBCAM
         private bool ExisteDispositivo = false;
         public FilterInfoCollection camara;
@@ -41,11 +43,18 @@ namespace Amigo_Secreto
 
         private void frmMenu_Participantes_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'amigo_SecretoDataSet.SP_Evento_SelectAll' Puede moverla o quitarla según sea necesario.
-            this.sP_Evento_SelectAllTableAdapter.Fill(this.amigo_SecretoDataSet.SP_Evento_SelectAll);
-            Participante_Logica.ObtenerTodos();
+
+            refresecar_Eventos();
+           
         }
 
+        private void refresecar_Eventos()
+        {
+            foreach (Evento evento in Evento_Logica.ObtenerTodos())
+            {
+                cmbevento.Items.Add(evento);
+            }
+        }
 
         public void CargarDispositivos(FilterInfoCollection Dispositivos)
         {
@@ -133,9 +142,9 @@ namespace Amigo_Secreto
         {
             try
             {
-                Regalo regalo = new Regalo();
+                regalo = new Regalo();
                 regalo.Id = logica_Regalo.ultimo();
-                regalo.Nombre = txtNombre.Text;
+                regalo.Nombre = txtNombre_Regalo.Text;
                 regalo.Cantida = Convert.ToInt32(npdCantidad.Value);
 
                 if (rbtnSi.Checked)
@@ -151,7 +160,7 @@ namespace Amigo_Secreto
                 }
                 regalo.Descripcion = txtDescripcion.Text;
                 regalo.Enlace = txtEnlace.Text;
-                regalo.Id_Participante = participante.id;
+                regalo.Id_Participante = 1;
 
                 logica_Regalo.Guardar(regalo);
             }
@@ -160,13 +169,13 @@ namespace Amigo_Secreto
 
                 throw;
             }
-            Refrescar();
+            Refrescar(1);
         }
 
         //Obtener todos los regalos 
-        private void Refrescar()
+        private void Refrescar(int id)
         {
-            dtgRegalos.DataSource = Regalo_Logica.ObtenerTodos();
+            dtgRegalos.DataSource=Regalo_Logica.ObtenerTodos_PorParticipante(id);
         }
         //Boton para guardar el participante
         private void btnRegistrar_Click(object sender, EventArgs e)
@@ -193,10 +202,13 @@ namespace Amigo_Secreto
                 participante.Telefono = Convert.ToInt32(mskTelefo.Text);
                 conv_photo();
                 participante.Foto = pctCamara.Image;
+                Evento evento = (Evento)cmbevento.SelectedItem;
 
-
-
-              
+                //int Id = (int)cmbevento.SelectedIndex;
+                participante.Id_Evento = evento.Id;
+                participante.Id_Rol = 3;
+                
+                             
                 logica_Parti.Guardar(participante);
 
 
@@ -210,7 +222,7 @@ namespace Amigo_Secreto
 
         public void conv_photo()
         {
-            SqlCommand cmd;
+            //SqlCommand cmd;
             if (pctCamara.Image != null)
             {
                 
@@ -221,6 +233,13 @@ namespace Amigo_Secreto
                 ms.Read(photo_aray, 0, photo_aray.Length);
                 //cmd.Parameters.AddWithValue("@foto", photo_aray);
             }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(dtgRegalos.SelectedCells[0].Value);
+
+            logica_Regalo.Eliminar(id);
         }
     }
 }
