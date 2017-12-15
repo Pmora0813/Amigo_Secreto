@@ -16,7 +16,7 @@ namespace Amigo_Secreto.Logica
         {
             if (participante == null)
                 throw new ArgumentException("No se a creado Un Participante");
-            if (participante.id <= 0)
+            if (participante.id <= -1)
                 throw new ArgumentException("El ID tiene que ser mayor a Cero");
             if (participante.Nombre.Equals(" "))
                 throw new ArgumentException("Ingrese el Nombre");

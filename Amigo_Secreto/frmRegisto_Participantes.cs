@@ -43,7 +43,7 @@ namespace Amigo_Secreto
         {
             // TODO: esta línea de código carga datos en la tabla 'amigo_SecretoDataSet.SP_Evento_SelectAll' Puede moverla o quitarla según sea necesario.
             this.sP_Evento_SelectAllTableAdapter.Fill(this.amigo_SecretoDataSet.SP_Evento_SelectAll);
-
+            Participante_Logica.ObtenerTodos();
         }
 
 
@@ -85,6 +85,7 @@ namespace Amigo_Secreto
             pctCamara.Image = Imagen;
         }
 
+        //Boton para iniciar la captura
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             if (btnIniciar.Text == "Iniciar")
@@ -113,7 +114,7 @@ namespace Amigo_Secreto
                 }
             }
         }
-
+        //Buscar una imagen para el regalo
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             OpenFileDialog menu_abrir = new OpenFileDialog();
@@ -127,6 +128,7 @@ namespace Amigo_Secreto
             }
         }
 
+        //Guardar todos los regalos
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             try
@@ -161,12 +163,12 @@ namespace Amigo_Secreto
             Refrescar();
         }
 
-
+        //Obtener todos los regalos 
         private void Refrescar()
         {
             dtgRegalos.DataSource = Regalo_Logica.ObtenerTodos();
         }
-
+        //Boton para guardar el participante
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             try
@@ -189,10 +191,14 @@ namespace Amigo_Secreto
                 }
 
                 participante.Telefono = Convert.ToInt32(mskTelefo.Text);
+                conv_photo();
                 participante.Foto = pctCamara.Image;
 
+
+
+              
                 logica_Parti.Guardar(participante);
-                
+
 
             }
             catch
@@ -204,15 +210,16 @@ namespace Amigo_Secreto
 
         public void conv_photo()
         {
+            SqlCommand cmd;
             if (pctCamara.Image != null)
             {
-                SqlCommand cmd = new SqlCommand();
+                
                 MemoryStream ms = new MemoryStream();
                 pctCamara.Image.Save(ms, ImageFormat.Jpeg);
                 byte[] photo_aray = new byte[ms.Length];
                 ms.Position = 0;
                 ms.Read(photo_aray, 0, photo_aray.Length);
-                cmd.Parameters.AddWithValue("@photo", photo_aray);
+                //cmd.Parameters.AddWithValue("@foto", photo_aray);
             }
         }
     }

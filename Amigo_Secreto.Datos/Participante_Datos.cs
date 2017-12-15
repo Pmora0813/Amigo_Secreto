@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,13 +35,13 @@ namespace Amigo_Secreto.Datos
                     new SqlParameter("nombre",participante.Nombre),
                     new SqlParameter("genero",participante.Genero),
                     new SqlParameter("telefono",participante.Telefono),
-                    new SqlParameter("foto",participante.Foto),
                     new SqlParameter("registrado",participante.Registrado),
                     new SqlParameter("id_Rol",participante.Id_Rol),
                     new SqlParameter("id_Regalo",participante.Id_Regalo),
                     new SqlParameter("id_Evento",participante.Id_Evento)
 
                 };
+                
                 command.Parameters.AddRange(parameters);
                 cargar = command.ExecuteReader();
 
@@ -137,6 +138,7 @@ namespace Amigo_Secreto.Datos
                     participante.Nombre = reader["Nombre"].ToString();
                     participante.Genero = Convert.ToChar(reader["genero"]);
                     participante.Telefono = Convert.ToInt32(reader["telefono"]);
+
                     //participante.Foto = Convert.ToSByte(reader["foto"].ToString());
                     participante.Registrado = Convert.ToBoolean(reader["registrado"]);
                     participante.Id_Rol = Convert.ToInt32(reader["id_Rol"]);
